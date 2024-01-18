@@ -1,0 +1,13 @@
+.login-btn{
+    width: 150px;
+}
+
+.section-overflow{
+    overflow-x: hidden;
+}
+
+.auth-btn{
+    /* justify-self: end; */
+    /* align-self:; */
+    place-self: end;
+}
