@@ -1,10 +1,10 @@
 import Form from "react-bootstrap/Form";
-import Img from "../../../assets/SignUp.png"
+import Img from "../../assets/SignUp.png"
 import { useState } from "react";
 import "./index.css"
 import axios from "axios";
 
-const SignUp = () => {
+const Auth = () => {
 
   const [data, setData] = useState({
     name: "",
@@ -66,6 +66,7 @@ const SignUp = () => {
         <h2 className="text-color-dark mt-5">
           {isSignUp ? "Create Account" : "Login"}
         </h2>
+
         <Form className="w-50 mt-5" onSubmit={handleAuth}>
           {isSignUp ? (
             <Form.Group className="mb-3" controlId="formBasicName">
@@ -129,4 +130,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Auth;

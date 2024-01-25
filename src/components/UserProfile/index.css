@@ -1,0 +1,12 @@
+.profile{
+    /* margin-top: 50px; */
+    height: 20vh;
+    gap: 100px;
+    width: 50vw;
+    margin: auto;
+}
+
+.profile-img{
+    height: 15vh !important;
+    width: 15% !important;
+}

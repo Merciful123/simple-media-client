@@ -1,0 +1,10 @@
+.posts-img-con{
+    width:10% ;
+    /* width: 65% !important; */
+}
+
+.posts-img{
+    min-height: 7vh !important;
+    /* min-width: 10% !important; */
+}
+

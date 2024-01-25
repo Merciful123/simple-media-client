@@ -1,17 +1,20 @@
-import SignUp from './components/Auth/SignUp'
 // import './App.css'
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "./components/Auth/SignUp/index.css"
+// import NavBar from './components/Navbar';
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
+ 
+import { AppRouter } from "./route";
 
 function App() {
-
   return (
-    <div className="section-overflow overflow-x-hidden ">
-      <SignUp />
-
-      {/* <div>Hello world</div> */}
+    <div>
+      <Router>
+        <AppRouter/>
+     </Router>
     </div>
   );
 }
 
-export default App
+export default App;

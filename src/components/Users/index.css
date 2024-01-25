@@ -1,0 +1,11 @@
+.users-container{
+    width: 45vw;
+    /* margin: 0 auto; */
+}
+
+
+.users-container-main{
+        height: 68vh;
+        width: 100%;
+        margin:0 auto;
+}

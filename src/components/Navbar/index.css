@@ -1,0 +1,17 @@
+.active{
+    color:#fd678a;
+}
+.active:active{
+    color:#fd678a;
+}
+
+.main-navbar{
+
+    height: 10vh;
+    position: absolute;
+    top: 0; 
+}
+
+.menu{
+    width: 35%;
+}

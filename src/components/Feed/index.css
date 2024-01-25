@@ -1,0 +1,22 @@
+.feed-container{
+    min-width: 100vw !important;
+    height: 88vh;
+    margin-top: -50px;
+}
+
+.feed-container-inner{
+    margin: 0 auto;
+    width: 45vw;
+}
+
+.write-btn{
+    width: 120px;
+    height: 44px;
+}
+
+.write-btn-con{
+    width: 45vw;
+    margin: 0 auto;
+    height: 10vh;
+    margin-top: -250px;
+}
