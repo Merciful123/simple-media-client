@@ -1,45 +1,50 @@
-import Tabs from "@mui/joy/Tabs";
-import TabList from "@mui/joy/TabList";
-import Tab from "@mui/joy/Tab";
-import TabPanel from "@mui/joy/TabPanel";
-import NavBar from "../Navbar";
-import "./index.css"
+import "./index.css";
 import User from "../UserProfile";
 import { SlUserFollowing } from "react-icons/sl";
 import { SlUserFollow } from "react-icons/sl";
 import { MdOutlinePostAdd } from "react-icons/md";
-import Followers from "../Followers";
-import Posts from "../Posts";
-import Following from "../Following";
+import { NavLink, Outlet } from "react-router-dom";
 
-export default function Profile() {
+
+const Profile = () => {
+
   return (
     <>
-      <NavBar />
-      <User />
+      <div className="upper-profile-section mb-4">
+        <User />
+      </div>
+      <div className="mt-4 middle-profile-section d-flex min-vw-100 m-auto justify-content-around gap-0">
+        <div className="w-50 d-flex justify-content-around border-profile-main  mb-4 ">
+          <NavLink
+            to="/profile/posts"
+            // activeClassName="active"
+            className="profile-tabs-style text-color-light d-flex p-4 justify-content-center align-items-center gap-1"
+          >
+            <MdOutlinePostAdd /> Posts
+          </NavLink>
 
-      <div className="d-flex overflow-hidden profile-tabs-main mt-4">
-        <Tabs
-          aria-label="Basic tabs"
-          defaultValue={0}
-          className=" profile-tabs"
-        >
-          <TabList className="profile-tabs d-flex w-100 justify-content-around gap-0">
-            <Tab>{<MdOutlinePostAdd />} Posts</Tab>
-            <Tab>{<SlUserFollow />} Followers</Tab>
-            <Tab>{<SlUserFollowing />}Following</Tab>
-          </TabList>
-          <TabPanel value={0} className="mt-4">
-           <Posts/>
-          </TabPanel>
-          <TabPanel value={1}>
-            <Followers/>
-          </TabPanel>
-          <TabPanel value={2}>
-            <Following/>
-          </TabPanel>
-        </Tabs>
+          <NavLink
+            to="/profile/followers"
+            // activeClassName="active"
+            className="profile-tabs-style text-color-light d-flex p-4 justify-content-center align-items-center gap-1"
+          >
+            <SlUserFollow /> Followers
+          </NavLink>
+
+          <NavLink
+            to="/profile/following"
+            // activeClassName="active"
+            className="profile-tabs-style text-color-light d-flex p-4 justify-content-center align-items-center gap-1"
+          >
+            <SlUserFollowing /> Following
+          </NavLink>
+        </div>
+      </div>
+      <div className="mt-4 profile-tabs lower-profile-section">
+        <Outlet />
       </div>
     </>
   );
-}
+};
+
+export default Profile;

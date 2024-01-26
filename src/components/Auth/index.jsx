@@ -3,6 +3,8 @@ import Img from "../../assets/SignUp.png"
 import { useState } from "react";
 import "./index.css"
 import axios from "axios";
+import Toast from "react-bootstrap/Toast";
+import { useUser } from "../../context/UserContext";
 
 const Auth = () => {
 
@@ -12,6 +14,12 @@ const Auth = () => {
     password: "",
     confirmpassword:""
   })
+  const [isSignUp, setIsSignUp] = useState(true);
+  const [toastMessage, setToastMessage] = useState("");
+  const [showToast, setShowToast] = useState(false);
+  const { userData, updateUser } = useUser();
+
+
 
   const handleChange = (e) => {
       setData({...data, [e.target.name]:e.target.value})
@@ -19,15 +27,13 @@ const Auth = () => {
   }
 
   const handleAuth = async (e) => {
-    console.log(data)
-    console.log(isSignUp)
-    e.preventDefault()
+    console.log(data);
+    console.log(isSignUp);
+    e.preventDefault();
     try {
       if (isSignUp) {
-          console.log(data)
-
         const auth = await axios.post(
-          "http://localhost:6060/api/register",
+          "https://orca-app-tsayf.ondigitalocean.app/api/register",
           data,
           {
             headers: {
@@ -35,30 +41,37 @@ const Auth = () => {
             },
           }
         );
-        console.log("message", auth.data);
-
-
+        updateUser(auth.data.user); // Update user data
+        setToastMessage(auth.data.message);
       } else {
-        const auth = await axios.post("http://localhost:6060/api/login", data);
-        console.log("message", auth.data);
-       
+        const auth = await axios.post(
+          "https://orca-app-tsayf.ondigitalocean.app/api/login",
+          data
+        );
+        updateUser(auth.data.user); // Update user data
+        setToastMessage(auth.data.message);
       }
-      } catch (error) {
-      console.log(error)
+
+      setShowToast(true);
+      setData({ name: "", email: "", password: "", confirmpassword: "" });
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
 
-
-  const[isSignUp, setIsSignUp] = useState(true)
+const toggleSignUp = () => {
+  setIsSignUp((prev) => !prev);
+  setShowToast(false); // Hide the toast when toggling between Login and Sign Up
+};
 
   // const [ confirmpassword, setConfirmpassword] = useState(true)
   return (
-    <div className="container overflow-x-hidden d-flex   justify-content-between min-vw-100">
-      <div className="d-flex flex-column w-100 ms-4 mt-4">
+    <div className="container login-container overflow-x-hidden d-flex   justify-content-between min-vw-100">
+      <div className="d-flex flex-column w-100 ms-4 mt-5">
         <h3 className="primary-color">TweetX</h3>
         <button
-          onClick={() => setIsSignUp((prev) => !prev)}
+          onClick={toggleSignUp}
           className="p-2 mt-2 border login-btn rounded-3 text-color-dark"
         >
           {isSignUp ? "Login" : "Create Account"}
@@ -121,6 +134,18 @@ const Auth = () => {
             {isSignUp ? "Sign Up" : "Login"}
           </button>
         </Form>
+        {/*  */}
+        <Toast
+          show={showToast}
+          onClose={() => setShowToast(false)}
+          className="position-fixed bottom-0 end-0 p-3"
+        >
+          <Toast.Header>
+            <strong className="me-auto">Notification</strong>
+          </Toast.Header>
+          <Toast.Body>{toastMessage}</Toast.Body>
+        </Toast>
+        {/*  */}
       </div>
 
       <div className="w-100">

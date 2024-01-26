@@ -1,15 +1,17 @@
-import NavBar from "../Navbar";
+import { Link } from "react-router-dom";
 import "./index.css";
 
 const Feeds = () => {
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <div className="d-flex flex-column justify-content-center   feed-container">
         <div className="write-btn-con">
-          <button className=" write-btn text-light primary-bg-color">
-            Write
-          </button>
+          <Link to={"/postform"}>
+            <button className=" write-btn text-light primary-bg-color">
+              Write
+            </button>
+          </Link>
         </div>
         <div className="shadow-sm feed-container-inner d-flex gap-4  justify-content-around align-items-center ">
           <div className="posts-img-con  align-self-start justify-self-center">

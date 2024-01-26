@@ -3,14 +3,41 @@
     min-width: 100vw;
     gap: 50px;
     justify-content: center;
-    height: 50%;
     height: 55vh;
-    /* margintop: 20px; */
-    /* margin:0 auto; */
+  
 }
 .profile-tabs{
     width: 50vw;
-    /* margin:0 auto; */
-    /* display: flex; */
-    /* gap: 50px; */
+    margin: auto;
 }
+
+.upper-profile-section{
+    height: 20vh;
+}
+
+.middle-profile-section{
+    height: 5vh;
+}
+
+.lower-profile-section{
+    height: 50vh;
+}
+
+ 
+/* Style for the active link */
+.profile-tabs-style.active {
+  border-top: 2px solid #6c696a; 
+  padding-top: 10px;
+  /* padding-top: 25px;Adjust the color as needed */
+}
+
+.profile-tabs-style:hover{
+    color: #fd678a;
+     
+}
+
+.border-profile-main{
+  border-top: 1px solid #bab6b8;
+
+}
+ 

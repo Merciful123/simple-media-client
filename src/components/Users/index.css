@@ -1,11 +1,12 @@
-.users-container{
-    width: 45vw;
-    /* margin: 0 auto; */
+.users-container {
+  width: 45vw;
+  margin: 0 auto;
+  border-bottom: 1px solid rgb(237, 229, 229);
+  height: 15vh;
 }
 
-
-.users-container-main{
-        height: 68vh;
-        width: 100%;
-        margin:0 auto;
+.users-container-main {
+  height: 70vh;
+  width: 100vw;
+  margin-top: 50px;
 }

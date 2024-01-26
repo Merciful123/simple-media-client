@@ -1,5 +1,8 @@
+import { useUser } from "../../context/UserContext";
 import "./index.css"
 const User = () => {
+  const { userData } = useUser();
+
   return (
     <div className="d-flex  justify-content-center align-items-center profile mt-5">
       <div className="d-flex profile-img">
@@ -10,7 +13,7 @@ const User = () => {
         />
       </div>
       <div className="d-flex flex-column justify-content-center gap-4 w-50">
-        <div className="justify-self-start fs-4">Name</div>
+        <div className="justify-self-start fs-4">{userData?.name}</div>
         <div className="d-flex justify-content-between gap-4">
           <div>Post</div>
           <div>Follower</div>

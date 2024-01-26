@@ -1,0 +1,14 @@
+.not-found-container {
+  display: flex;
+  margin-top: 50px;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #e74c3c; /* Red color for emphasis */
+}
+
+p {
+  font-size: 1.2em;
+  color: #555;
+}
