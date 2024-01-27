@@ -6,8 +6,17 @@
 }
 
 .users-container-main {
-  height: 84vh;
+  height: 85vh;
   width: 100vw;
-  margin-top: 50px;
+  margin-top: 120px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
+
+
+.users-follow-btn{
+    height: 44px;
+    width: 100px;
+}
+
+ 

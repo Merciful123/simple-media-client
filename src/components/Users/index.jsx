@@ -58,38 +58,38 @@ const Users = () => {
   return (
     <>
       <div className="users-container-main flex-column justify-content-center d-flex">
-        {users.map((user) => (
-          <div
-            key={user._id}
-            className="users-container d-flex gap-4 justify-content-around mt-4"
-          >
-            <div className="align-self-start justify-self-center">
-              <img
-                src=""
-                style={{ minHeight: "7vh" }}
-                alt="pic"
-                className="rounded-circle border border-secondary h-100 w-100"
-              />
-            </div>
-            <div className="d-flex flex-column gap-2 justify-content-between w-75">
-              <div className="d-flex justify-content-between">
-                <div className="d-flex flex-column gap-1">
-                  <div className="fs-4">{user.name}</div>
-                  <div className="followers-count">
-                    Followers: {user.followers.length}
+          {users.map((user) => (
+            <div
+              key={user._id}
+              className="users-container d-flex gap-4 justify-content-around mt-4 p-3"
+            >
+              <div className="align-self-start justify-self-center">
+                <img
+                  src=""
+                  style={{ minHeight: "7vh" }}
+                  alt="pic"
+                  className="rounded-circle border border-secondary h-100 w-100"
+                />
+              </div>
+              <div className="d-flex flex-column gap-2 justify-content-between w-75">
+                <div className="d-flex justify-content-between">
+                  <div className="d-flex flex-column gap-1">
+                    <div className="fs-4">{user.name}</div>
+                    <div className="followers-count">
+                      Followers: {user.followers.length}
+                    </div>
                   </div>
+                  <button
+                    onClick={() => handleFollow(user?._id)}
+                    className="users-follow-btn text-light primary-bg-color"
+                  >
+                    {user.followers.includes(userId) ? "Followed" : "Follow"}
+                  </button>
                 </div>
-                <button
-                  onClick={() => handleFollow(user?._id)}
-                  className="followers-follow-btn text-light primary-bg-color"
-                >
-                  {user.followers.includes(userId) ? "Followed" : "Follow"}
-                </button>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       <ToastContainer position="top-end" className="p-3 " style={{ zIndex: 1 }}>
         <Toast
           show={showToast}
