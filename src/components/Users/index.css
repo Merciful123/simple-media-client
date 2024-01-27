@@ -6,7 +6,8 @@
 }
 
 .users-container-main {
-  height: 70vh;
+  height: 84vh;
   width: 100vw;
   margin-top: 50px;
+  overflow-y: auto;
 }

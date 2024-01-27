@@ -1,12 +1,14 @@
 .feed-container{
     min-width: 100vw !important;
-    height: 88vh;
-    margin-top: -50px;
+    height: 75vh;
+    /* margin-top: -50px; */
+    overflow-y: auto;
 }
 
 .feed-container-inner{
     margin: 0 auto;
     width: 45vw;
+    /* height: 70vh; */
 }
 
 .write-btn{
@@ -17,6 +19,6 @@
 .write-btn-con{
     width: 45vw;
     margin: 0 auto;
-    height: 10vh;
-    margin-top: -250px;
+    /* height: 10vh; */
+    margin-top: 50px;
 }

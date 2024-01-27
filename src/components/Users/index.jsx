@@ -1,12 +1,45 @@
 import axios from "axios";
 import "./index.css";
 import { useEffect, useState } from "react";
+import { useUser } from "../../context/UserContext";
+import { Toast, ToastContainer } from "react-bootstrap";
 
 const Users = () => {
-
-
   const [users, setUsers] = useState([]);
- console.log(users)
+  console.log(users);
+
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+
+  const { userData } = useUser();
+  const userId = userData?._id;
+  const handleFollow = async (userIdToFollow) => {
+    try {
+      const response = await axios.post(
+        `https://orca-app-tsayf.ondigitalocean.app/api/followuser`,
+        {
+          userId: userId,
+          followUserId: userIdToFollow,
+        }
+      );
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          user._id === userIdToFollow
+            ? { ...user, followers: [...user.followers, userId] }
+            : user
+        )
+      );
+      setToastMessage(response.data.message);
+      setShowToast(true);
+      // You can update the state or UI to reflect that the user is now being followed
+    } catch (error) {
+      setToastMessage("User followed already or Invalid request!");
+      setShowToast(true);
+      console.error("Error following user:", error);
+      // Handle errors or display a message to the user
+    }
+  };
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -21,7 +54,6 @@ const Users = () => {
 
     fetchUsers();
   }, []);
-
 
   return (
     <>
@@ -47,14 +79,31 @@ const Users = () => {
                     Followers: {user.followers.length}
                   </div>
                 </div>
-                <button className="followers-follow-btn text-light primary-bg-color">
-                  Follow
+                <button
+                  onClick={() => handleFollow(user?._id)}
+                  className="followers-follow-btn text-light primary-bg-color"
+                >
+                  {user.followers.includes(userId) ? "Followed" : "Follow"}
                 </button>
               </div>
             </div>
           </div>
         ))}
       </div>
+      <ToastContainer position="top-end" className="p-3 " style={{ zIndex: 1 }}>
+        <Toast
+          show={showToast}
+          onClose={() => setShowToast(false)}
+          autohide={true}
+          delay={"4000"}
+          className="position-fixed bottom-0 end-0 p-3 absolute top-0 right-0 h-25"
+        >
+          <Toast.Header>
+            <strong className="me-auto">Notification</strong>
+          </Toast.Header>
+          <Toast.Body>{toastMessage}</Toast.Body>
+        </Toast>
+      </ToastContainer>
     </>
   );
 };

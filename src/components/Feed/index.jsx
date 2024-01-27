@@ -1,11 +1,39 @@
 import { Link } from "react-router-dom";
 import "./index.css";
+import { useUser } from "../../context/UserContext";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { formatDistanceToNow } from "date-fns";
 
 const Feeds = () => {
+  const { userData } = useUser();
+
+  const userId = userData?._id;
+
+  const [allPostsData, setAllPostsData] = useState([]);
+  console.log(allPostsData);
+  useEffect(() => {
+    const fetchAllPosts = async () => {
+      try {
+        const posts = await axios.get(
+          `https://orca-app-tsayf.ondigitalocean.app/api/allposts/${userId}`
+        );
+        setAllPostsData(posts?.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAllPosts();
+  }, []);
+
+  //  handling post creation time
+
+  const getTimeAgo = (createdAt) => {
+    return formatDistanceToNow(new Date(createdAt), { addSuffix: true });
+  };
   return (
     <>
-      {/* <NavBar /> */}
-      <div className="d-flex flex-column justify-content-center   feed-container">
+      <div className="d-flex flex-column justify-content-center ">
         <div className="write-btn-con">
           <Link to={"/postform"}>
             <button className=" write-btn text-light primary-bg-color">
@@ -13,26 +41,29 @@ const Feeds = () => {
             </button>
           </Link>
         </div>
-        <div className="shadow-sm feed-container-inner d-flex gap-4  justify-content-around align-items-center ">
-          <div className="posts-img-con  align-self-start justify-self-center">
-            <img
-              src=""
-              alt="pic"
-              className="posts-img rounded-circle border border-secondary"
-            />
-          </div>
-          <div className="d-flex flex-column gap-2 justify-content-between w-75 ">
-            <div className="d-flex justify-content-between">
-              <div className="fs-4">name</div>
-              <div className="">time</div>
-            </div>
+        <div className="feed-container">
+          {allPostsData?.posts?.map((post) => (
+            <div
+              key={post?._id}
+              className="shadow-sm feed-container-inner d-flex gap-4  justify-content-around  p-2 mt-3"
+            >
+              <div className="posts-img-con  align-self-start justify-self-center">
+                <img
+                  src=""
+                  alt="pic"
+                  className="posts-img rounded-circle border border-secondary"
+                />
+              </div>
+              <div className="d-flex flex-column gap-2 justify-content-between w-75 ">
+                <div className="d-flex justify-content-between">
+                  <div className="fs-4">{post?.username}</div>
+                  <div className="">{getTimeAgo(post?.createdAt)}</div>
+                </div>
 
-            <div className="w-100 mt-4">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed
-              vitae velit culpa quisquam inventore laudantium quaerat in,
-              numquam doloribus consequuntur.
+                <div className="w-100 mt-4">{post?.postData}</div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </>

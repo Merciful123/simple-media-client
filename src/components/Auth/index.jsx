@@ -5,6 +5,7 @@ import "./index.css"
 import axios from "axios";
 import Toast from "react-bootstrap/Toast";
 import { useUser } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
 
@@ -19,6 +20,7 @@ const Auth = () => {
   const [showToast, setShowToast] = useState(false);
   const { userData, updateUser } = useUser();
 
+  const naviagte = useNavigate();
 
 
   const handleChange = (e) => {
@@ -53,8 +55,11 @@ const Auth = () => {
       }
 
       setShowToast(true);
+      naviagte("/profile")
       setData({ name: "", email: "", password: "", confirmpassword: "" });
     } catch (error) {
+      setToastMessage("invalid request");
+      setShowToast(true);
       console.log(error);
     }
   };
@@ -138,7 +143,9 @@ const toggleSignUp = () => {
         <Toast
           show={showToast}
           onClose={() => setShowToast(false)}
-          className="position-fixed bottom-0 end-0 p-3"
+          autohide={true}
+          delay={"4000"}
+          className="position-fixed bottom-0 end-0 p-3 absolute top-0 right-0 h-25"
         >
           <Toast.Header>
             <strong className="me-auto">Notification</strong>

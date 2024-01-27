@@ -38,7 +38,8 @@ const App = () => {
           path="/profile"
           element={userData ? <Profile /> : <Navigate to="/" />}
         >
-          <Route path="posts" element={<Posts />} />{" "}
+          <Route index element={<Navigate to="posts" />} />
+          <Route path="posts" element={<Posts />} />
           <Route path="followers" element={<Followers />} />{" "}
           <Route path="following" element={<Following />} />
         </Route>

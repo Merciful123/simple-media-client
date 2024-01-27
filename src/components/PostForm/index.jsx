@@ -1,4 +1,4 @@
-import { Form, Toast, ToastContainer } from "react-bootstrap";
+import { Form, Toast } from "react-bootstrap";
 import "./index.css";
 import { useState } from "react";
 import axios from "axios";
@@ -14,7 +14,7 @@ const PostForm = () => {
   const [toastMessage, setToastMessage] = useState("");
 
   const { userData } = useUser();
-  console.log(userData)
+  // console.log(userData)
 
    
    const handleInputChange = (e) => {
@@ -35,6 +35,7 @@ const PostForm = () => {
         {
           userId: userData?._id,
           postData: post?.postData,
+          username: userData?.name
           // ... other necessary data ...
         },
         {
@@ -51,6 +52,8 @@ const PostForm = () => {
 
       console.log("Post created successfully:", response.data);
     } catch (error) {
+      setToastMessage("invalid request")
+      setShowToast(true);
       console.error("Error creating post:", error);
     }
   };
@@ -79,19 +82,19 @@ const PostForm = () => {
           </button>
         </Form>
       </div>
-      <ToastContainer position="top-end" className="p-3" style={{ zIndex: 1 }}>
         <Toast
-          show={showToast}
+        show={showToast}
+        
           onClose={() => setShowToast(false)}
-          className="position-fixed bottom-0 end-0 p-3"
-          position="top-end"
+          className="position-fixed bottom-0 end-0 p-3 absolute top-0 right-0 h-25"
+        autohide={true}
+        delay={"4000"}
         >
           <Toast.Header>
             <strong className="me-auto">Notification</strong>
           </Toast.Header>
           <Toast.Body>{toastMessage}</Toast.Body>
         </Toast>
-      </ToastContainer>
     </>
   );
 };
