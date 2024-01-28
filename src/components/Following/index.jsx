@@ -72,7 +72,7 @@ const Following = () => {
     {
       user: {
         _id: "1",
-        name: "John Doe",
+        name: "John Doe hard coded",
         followers: ["follower1", "follower2"],
       },
     },
@@ -81,7 +81,7 @@ const Following = () => {
 
   return (
     <>
-      {(followings?.length?.length > 0 ? followings : hardcodedData)?.map(
+      {(followings?.length > 0 ? followings : hardcodedData)?.map(
         (following) => (
           <div
             key={following?.user?._id}

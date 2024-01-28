@@ -60,12 +60,12 @@ const Users = () => {
   const hardcodedData = [
     {
       _id: "1",
-      name: "John Doe",
+      name: "John Doe hard coded",
       followers: ["follower1", "follower2"],
     },
     {
       _id: "2",
-      name: "Jane Smith",
+      name: "Jane Smith hard coded",
       followers: ["follower3", "follower4"],
     },
     // Add more hardcoded users as needed

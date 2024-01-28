@@ -39,7 +39,7 @@ const Posts = () => {
   const hardcodedData = [
     {
       _id: "1",
-      username: "John Doe",
+      username: "John Doe hard coded",
       createdAt: new Date().toISOString(),
       postData: "This is a hardcoded post.",
     },

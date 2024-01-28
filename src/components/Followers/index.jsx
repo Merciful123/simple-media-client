@@ -87,17 +87,16 @@ const Followers = () => {
     {
       user: {
         _id: "1",
-        name: "John Doe",
+        name: "John Doe hard coded",
         followers: ["follower1_1", "follower1_2"],
-      }
+      },
     },
     {
       user: {
         _id: "2",
-        name: "Jane Smith",
+        name: "Jane Smith hard coded",
         followers: ["follower2_1", "follower2_2"],
       },
-     
     },
     // Add more hardcoded users as needed
   ];
