@@ -1,4 +1,4 @@
-#### Built using react and vite , used react-bootstrap and deployed to netlify.
+### Built using react and vite , used react-bootstrap and deployed to netlify.
 
 #### Clone the repo
 
