@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useUser } from "../../context/UserContext";
 import { Toast, ToastContainer } from "react-bootstrap";
-
+import "./index.css"
 const Followers = () => {
   const [followers, setFollowers] = useState([]);
   const [showToast, setShowToast] = useState(false);
