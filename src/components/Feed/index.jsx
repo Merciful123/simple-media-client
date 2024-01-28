@@ -4,6 +4,7 @@ import { useUser } from "../../context/UserContext";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { formatDistanceToNow } from "date-fns";
+import { Image as BootstrapImage } from "react-bootstrap";
 
 const Feeds = () => {
   const { userData } = useUser();
@@ -31,6 +32,18 @@ const Feeds = () => {
   const getTimeAgo = (createdAt) => {
     return formatDistanceToNow(new Date(createdAt), { addSuffix: true });
   };
+
+
+  const hardcodedData = [
+    {
+      _id: "1",
+      username: "John Doe",
+      createdAt: new Date().toISOString(),
+      postData: "This is a hardcoded post.",
+    },
+    // Add more hardcoded posts as needed
+  ];
+
   return (
     <>
       <div className="d-flex flex-column justify-content-center ">
@@ -42,14 +55,21 @@ const Feeds = () => {
           </Link>
         </div>
         <div className="feed-container">
-          {allPostsData?.posts?.map((post) => (
+          {(allPostsData?.posts?.length > 0
+            ? allPostsData?.posts
+            : hardcodedData
+          )?.map((post) => (
             <div
               key={post?._id}
               className="shadow-sm feed-container-inner d-flex gap-4  justify-content-around  p-2 mt-3"
             >
               <div className="posts-img-con  align-self-start justify-self-center">
-                <img
-                  src=""
+                <BootstrapImage
+                  src={
+                    post?.imageurl
+                      ? post?.imageurl
+                      : "https://placekitten.com/100/100"
+                  }
                   alt="pic"
                   className="posts-img rounded-circle border border-secondary"
                 />

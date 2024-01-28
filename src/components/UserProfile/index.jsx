@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useUser } from "../../context/UserContext";
 import "./index.css"
 import axios from "axios";
+import { Image as BootstrapImage } from "react-bootstrap";
+
 const User = () => {
   const { userData } = useUser();
 
@@ -48,8 +50,12 @@ const User = () => {
   return (
     <div className="d-flex  justify-content-center align-items-center profile mt-5">
       <div className="d-flex profile-img">
-        <img
-          src=""
+        <BootstrapImage
+          src={
+            userData?.imageurl
+              ? userData?.imageurl
+              : "https://placekitten.com/100/100"
+          }
           alt="pic"
           className="rounded-circle border w-100 h-100 border-secondary"
         />

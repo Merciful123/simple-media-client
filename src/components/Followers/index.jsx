@@ -3,6 +3,9 @@ import axios from "axios";
 import { useUser } from "../../context/UserContext";
 import { Toast, ToastContainer } from "react-bootstrap";
 import "./index.css"
+import { Image as BootstrapImage } from "react-bootstrap";
+
+
 const Followers = () => {
   const [followers, setFollowers] = useState([]);
   const [showToast, setShowToast] = useState(false);
@@ -79,17 +82,40 @@ const Followers = () => {
 
     fetchFollowers();
   }, [followerIds]);
+  // Simulated hardcoded data
+  const hardcodedData = [
+    {
+      user: {
+        _id: "1",
+        name: "John Doe",
+        followers: ["follower1_1", "follower1_2"],
+      }
+    },
+    {
+      user: {
+        _id: "2",
+        name: "Jane Smith",
+        followers: ["follower2_1", "follower2_2"],
+      },
+     
+    },
+    // Add more hardcoded users as needed
+  ];
 
   return (
     <>
-      {followers?.map((follower) => (
+      {(followers?.length > 0 ? followers : hardcodedData)?.map((follower) => (
         <div
           key={follower?.user?._id}
           className="shadow-sm followers-container d-flex gap-4 flex-row justify-content-around align-items-center w-100 mt-4 p-3"
         >
           <div className="align-self-start">
-            <img
-              src=""
+            <BootstrapImage
+              src={
+                follower?.imageurl
+                  ? follower?.imageurl
+                  : "https://placekitten.com/100/100"
+              }
               style={{ minHeight: "7vh" }}
               alt="pic"
               className="rounded-circle border border-secondary h-100 w-100"
