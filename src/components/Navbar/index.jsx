@@ -1,9 +1,21 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import "./index.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 
 const NavBar = () => {
+  //  handling logout
+  const navigate = useNavigate();
+
+  const { updateUser, userData } = useUser();
+  console.log(userData);
+  const handleLogout = () => {
+    // Clear user data
+    updateUser(null);
+    // Redirect to login page or any other page
+    navigate("/");
+  };
   return (
     <div className="d-flex flex-column main-navbar min-vw-100">
       <Navbar className="bg-body-tertiary shadow-sm w-100">
@@ -41,7 +53,14 @@ const NavBar = () => {
             >
               Profile
             </NavLink>
-            <div className="w-25"></div>
+            {userData && (
+              <div
+                className="w-25 fw-bold text-color-light logout-btn"
+                onClick={handleLogout}
+              >
+                Logout
+              </div>
+            )}
           </div>
         </Container>
       </Navbar>

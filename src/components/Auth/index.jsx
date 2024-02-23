@@ -20,7 +20,7 @@ const Auth = () => {
   const [showToast, setShowToast] = useState(false);
   const { userData, updateUser } = useUser();
 
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
 
 
   const handleChange = (e) => {
@@ -55,7 +55,7 @@ const Auth = () => {
       }
 
       setShowToast(true);
-      naviagte("/profile")
+      navigate("/profile")
       setData({ name: "", email: "", password: "", confirmpassword: "" });
     } catch (error) {
       setToastMessage("invalid request");
@@ -70,6 +70,16 @@ const toggleSignUp = () => {
   setShowToast(false); // Hide the toast when toggling between Login and Sign Up
 };
 
+  //  handling logout
+  
+    const handleLogout = () => {
+      // Clear user data
+      updateUser(null);
+      // Redirect to login page or any other page
+      navigate("/login");
+    };
+  
+  
   // const [ confirmpassword, setConfirmpassword] = useState(true)
   return (
     <div className="container login-container overflow-x-hidden d-flex   justify-content-between min-vw-100">
