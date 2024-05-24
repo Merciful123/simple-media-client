@@ -16,7 +16,7 @@ const User = () => {
     const fetcPostCount = async () => {
        try {
          const userPostsCount = await axios.get(
-           `https://orca-app-tsayf.ondigitalocean.app/api/singleuserposts/${userId}`
+           `https://simple-media-api.onrender.com/api/singleuserposts/${userId}`
          );
          setUserPostsCount(userPostsCount?.data?.postCount);
        } catch (error) {
@@ -35,7 +35,7 @@ const User = () => {
     const getUserData = async () => {
       try {
         const data = await axios.get(
-          `https://orca-app-tsayf.ondigitalocean.app/api/getuserdetails/${userId}`
+          `https://simple-media-api.onrender.com/api/getuserdetails/${userId}`
         );
         setUserDatails(data?.data);
       } catch (error) {

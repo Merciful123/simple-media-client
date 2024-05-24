@@ -17,9 +17,9 @@ const NavBar = () => {
     navigate("/");
   };
   return (
-    <div className="d-flex flex-column main-navbar min-vw-100">
-      <Navbar className="bg-body-tertiary shadow-sm w-100">
-        <Container className=" w-100 ">
+    <div className="d-flex flex-column main-navbar min-vw-100 ">
+      <Navbar className="bg-body-tertiary shadow-sm w-100 bg-slate-400 ">
+        <Container className=" w-100 bg-green-500 ">
           <Navbar.Brand href="#home" className="w-25 ">
             <Link to="/">
               <h3 className="primary-color">TweetX</h3>

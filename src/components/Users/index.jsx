@@ -17,7 +17,7 @@ const Users = () => {
   const handleFollow = async (userIdToFollow) => {
     try {
       const response = await axios.post(
-        `https://orca-app-tsayf.ondigitalocean.app/api/followuser`,
+        `https://simple-media-api.onrender.com/api/followuser`,
         {
           userId: userId,
           followUserId: userIdToFollow,
@@ -45,7 +45,7 @@ const Users = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          "https://orca-app-tsayf.ondigitalocean.app/api/allusers"
+          "https://simple-media-api.onrender.com/api/allusers"
         );
         setUsers(response.data);
       } catch (error) {

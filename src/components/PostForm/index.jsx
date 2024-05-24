@@ -31,11 +31,11 @@ const PostForm = () => {
     try {
       // You can now access userId from postData
       const response = await axios.post(
-        "https://orca-app-tsayf.ondigitalocean.app/api/createpost",
+        "https://simple-media-api.onrender.com/api/createpost",
         {
           userId: userData?._id,
           postData: post?.postData,
-          username: userData?.name
+          username: userData?.name,
           // ... other necessary data ...
         },
         {

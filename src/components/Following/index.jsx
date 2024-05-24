@@ -23,7 +23,7 @@ const Following = () => {
     const getUserData = async () => {
       try {
         const data = await axios.get(
-          `https://orca-app-tsayf.ondigitalocean.app/api/getuserdetails/${userId}`
+          `https://simple-media-api.onrender.com/api/getuserdetails/${userId}`
         );
         setUserDatails(data?.data);
       } catch (error) {
@@ -38,7 +38,7 @@ const Following = () => {
    try {
      const userPromises = userIds?.map((userId) =>
        axios.get(
-         `https://orca-app-tsayf.ondigitalocean.app/api/getuserdetails/${userId}`
+         `https://simple-media-api.onrender.com/api/getuserdetails/${userId}`
        )
      );
 

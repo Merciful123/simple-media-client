@@ -19,7 +19,7 @@ const Posts = () => {
     const fetchAllPosts = async () => {
       try {
         const posts = await axios.get(
-          `https://orca-app-tsayf.ondigitalocean.app/api/allposts/${userId}`
+          `https://simple-media-api.onrender.com/api/allposts/${userId}`
         );
         setAllPostsData(posts?.data);
       } catch (error) {
@@ -69,7 +69,11 @@ const Posts = () => {
               <div className="fs-4">{post?.username}</div>
               <div className="">{getTimeAgo(post?.createdAt)}</div>
             </div>
-            <div className="w-100 mt-4">{post?.postData}</div>
+            <div
+              className="w-100 mt-5 text-red-500 postdata-class"
+            >
+              {post?.postData}
+            </div>
           </div>
         </div>
       ))}

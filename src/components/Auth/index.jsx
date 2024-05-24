@@ -35,7 +35,7 @@ const Auth = () => {
     try {
       if (isSignUp) {
         const auth = await axios.post(
-          "https://orca-app-tsayf.ondigitalocean.app/api/register",
+          "https://simple-media-api.onrender.com/api/register",
           data,
           {
             headers: {
@@ -47,7 +47,7 @@ const Auth = () => {
         setToastMessage(auth.data.message);
       } else {
         const auth = await axios.post(
-          "https://orca-app-tsayf.ondigitalocean.app/api/login",
+          "https://simple-media-api.onrender.com/api/login",
           data
         );
         updateUser(auth.data.user); // Update user data
@@ -70,21 +70,14 @@ const toggleSignUp = () => {
   setShowToast(false); // Hide the toast when toggling between Login and Sign Up
 };
 
-  //  handling logout
   
-    const handleLogout = () => {
-      // Clear user data
-      updateUser(null);
-      // Redirect to login page or any other page
-      navigate("/login");
-    };
   
   
   // const [ confirmpassword, setConfirmpassword] = useState(true)
   return (
     <div className="container login-container overflow-x-hidden d-flex   justify-content-between min-vw-100">
       <div className="d-flex flex-column w-100 ms-4 mt-5">
-        <h3 className="primary-color">TweetX</h3>
+        {/* <h3 className="primary-color">TweetX</h3> */}
         <button
           onClick={toggleSignUp}
           className="p-2 mt-2 border login-btn rounded-3 text-color-dark"
